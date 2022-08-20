@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void FixedUpdate()
     {
+        TakeScreenShot();
         playerWalk();      
     }
 
@@ -83,6 +84,16 @@ public class PlayerMovement : MonoBehaviour
         Vector3 tempScale = transform.localScale;
         tempScale.x = direction;
         transform.localScale = tempScale;
+    }
+
+    void TakeScreenShot()
+    {
+        if (Input.GetKeyDown(KeyCode.SysReq))
+        {
+            int i = Random.Range(0, 100);
+            print("screenshot" + i + ".png is taken");
+            ScreenCapture.CaptureScreenshot("screenshot" + i + ".png");
+        }
     }
 
 }
